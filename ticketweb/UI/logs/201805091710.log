@@ -1,0 +1,8 @@
+2018-05-09 17:10:35,019 - BasePage - INFO - Had find the element '  ' successful by xpath via value: //*[@id="lst-ib"] 
+2018-05-09 17:10:35,099 - BasePage - INFO - Had type ' text ' in inputBox
+2018-05-09 17:10:35,492 - BasePage - INFO - Had take screenshot and save to folder : /screenshots
+2018-05-09 17:10:35,533 - BasePage - INFO - Had find the element '  ' successful by xpath via value: //*[@id="lst-ib"] 
+2018-05-09 17:10:35,556 - BasePage - INFO - Clear text in input box before typing.
+2018-05-09 17:10:35,895 - BasePage - INFO - Had take screenshot and save to folder : /screenshots
+2018-05-09 17:10:35,968 - BasePage - INFO - Had find the element ' About ' successful by xpath via value: //*[@id="hptl"]/a[1] 
+2018-05-09 17:10:35,983 - BasePage - INFO - The element ' About ' was clicked.

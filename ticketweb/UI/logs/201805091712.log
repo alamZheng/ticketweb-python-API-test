@@ -1,0 +1,7 @@
+2018-05-09 17:12:46,579 - BrowserEngine - INFO - You had select Chrome browser.
+2018-05-09 17:12:46,580 - BrowserEngine - INFO - The test server url is: https://ticketweb.com.tweb.twqa1.websys.tmcs/web-client/
+2018-05-09 17:12:51,780 - BrowserEngine - INFO - Starting Chrome browser.
+2018-05-09 17:12:55,161 - BrowserEngine - INFO - Open url: https://ticketweb.com.tweb.twqa1.websys.tmcs/web-client/
+2018-05-09 17:12:56,336 - BrowserEngine - INFO - Maximize the current window.
+2018-05-09 17:12:56,337 - BrowserEngine - INFO - Set implicitly wait 10 seconds.
+2018-05-09 17:12:56,337 - BrowserEngine - INFO - Now, Close and quit the browser.

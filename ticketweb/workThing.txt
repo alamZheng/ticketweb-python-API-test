@@ -1,0 +1,7 @@
+jianhang.zheng/FBfb201810 
+
+EDP url====?cache_disabled=true
+
+alter session set nls_date_format=‘yyyy-mm-dd hh24:mi:ss’;
+
+---VPN/Mail/jira------lyv\Alam.Zheng(---Summer201806---)

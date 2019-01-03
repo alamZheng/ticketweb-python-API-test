@@ -1,0 +1,2300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>{ Test Report }</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    
+<style type="text/css" media="screen">
+body        { font-family: Microsoft YaHei,Tahoma,arial,helvetica,sans-serif;padding: 20px; font-size: 80%; }
+table       { font-size: 100%; }
+/* -- heading ---------------------------------------------------------------------- */
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+/* -- report ------------------------------------------------------------------------ */
+#total_row  { font-weight: bold; }
+.passCase   { color: #5cb85c; }
+.failCase   { color: #d9534f; font-weight: bold; }
+.errorCase  { color: #f0ad4e; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+</style>
+
+</head>
+<body >
+<script language="javascript" type="text/javascript">
+output_list = Array();
+/*level 调整增加只显示通过用例的分类 --Findyou
+0:Summary //all hiddenRow
+1:Failed  //pt hiddenRow, ft none
+2:Pass    //pt none, ft hiddenRow
+3:All     //pt none, ft none
+*/
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level == 2 || level == 0 ) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level < 2) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+    }
+    //加入【详细】切换文字变化 --Findyou
+    detail_class=document.getElementsByClassName('detail');
+	//console.log(detail_class.length)
+	if (level == 3) {
+		for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="outline"
+		}
+	}
+	else{
+			for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="detail"
+		}
+	}
+}
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        //ID修改 点 为 下划线 -Findyou
+        tid0 = 't' + cid.substr(1) + '_' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        //修改点击无法收起的BUG，加入【详细】切换文字变化 --Findyou
+        if (toHide) {
+            document.getElementById(tid).className = 'hiddenRow';
+            document.getElementById(cid).innerText = "detail"
+        }
+        else {
+            document.getElementById(tid).className = '';
+            document.getElementById(cid).innerText = "outline"
+        }
+    }
+}
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+</script>
+<div class='heading'>
+<h1>{ Test Report }</h1>
+<p class='attribute'><strong>Tester : </strong> Alam</p>
+<p class='attribute'><strong>Start Time : </strong> 2018-07-20 11:59:23</p>
+<p class='attribute'><strong>Duration : </strong> 0:01:28.486061</p>
+<p class='attribute'><strong>Status : </strong> ALL 80 Pass 24 Failure 56, Passing rate: 30.00%</p>
+
+<p class='description'>Test report detail</p>
+</div>
+
+
+<p id='show_detail_line'>
+<a class="btn btn-primary" href='javascript:showCase(0)'>Summary{ 30.00% }</a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>Failed{ 56 }</a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>Error{ 0 }</a>
+<a class="btn btn-success" href='javascript:showCase(2)'>Passed{ 24 }</a>
+<a class="btn btn-info" href='javascript:showCase(3)'>ALL{ 80 }</a>
+</p>
+<table id='result_table' class="table table-condensed table-bordered table-hover">
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 14px;">
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='failClass warning'>
+    <td>test_feeHealth.TestFeeHealth</td>
+    <td class="text-center">2</td>
+    <td class="text-center">1</td>
+    <td class="text-center">1</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c1',2)" class="detail" id='c1'>Detail</a></td>
+</tr>
+
+<tr id='pt1_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_01_FeeHealth_QA1</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">pass</span></td>
+</tr>
+
+<tr id='ft1_2' class='none'>
+    <td class='failCase'><div class='testcase'>test_02_FeeHealth_Stg1</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_2'>fail</button>
+    <div id='div_ft1_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_2'>fail</button>
+    <div id='div_ft1_2' class="collapse in">
+    <pre>
+    
+ft1_2: Traceback (most recent call last):
+  File "D:\python\ticketweb\fee\API\test_feeHealth.py", line 43, in test_02_FeeHealth_Stg1
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='failClass warning'>
+    <td>test_getFee.TestGetFee</td>
+    <td class="text-center">38</td>
+    <td class="text-center">10</td>
+    <td class="text-center">28</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c2',38)" class="detail" id='c2'>Detail</a></td>
+</tr>
+
+<tr id='pt2_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_01_getFee_QA1_0_Url_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_1'>pass</button>
+    <div id='div_pt2_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_1'>pass</button>
+    <div id='div_pt2_1' class="collapse in">
+    <pre>
+    
+pt2_1: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domainfees/1/
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_01_getFee_QA1_1_Url_org</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_2'>pass</button>
+    <div id='div_pt2_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_2'>pass</button>
+    <div id='div_pt2_2' class="collapse in">
+    <pre>
+    
+pt2_2: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domains/1/orgfees/145162/
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_01_getFee_QA1_2_Url_event</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_3'>pass</button>
+    <div id='div_pt2_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_3'>pass</button>
+    <div id='div_pt2_3' class="collapse in">
+    <pre>
+    
+pt2_3: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domains/1/orgs/145162/eventfees/3705284
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_01_getFee_QA1_3_Url_eventFeeType</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_4'>pass</button>
+    <div id='div_pt2_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_4'>pass</button>
+    <div id='div_pt2_4' class="collapse in">
+    <pre>
+    
+pt2_4: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domains/1/orgs/145162/eventfees/3705284?feeType=8
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_01_getFee_QA1_4_Url_groupEventFeeType</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_5'>pass</button>
+    <div id='div_pt2_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_5'>pass</button>
+    <div id='div_pt2_5' class="collapse in">
+    <pre>
+    
+pt2_5: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domains/1/orgs/145162/eventgroupfees/88785
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_02_getFee_QA1_AllDomain_0_ca_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_6'>pass</button>
+    <div id='div_pt2_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_6'>pass</button>
+    <div id='div_pt2_6' class="collapse in">
+    <pre>
+    
+pt2_6: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domainfees/2/
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_7' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_02_getFee_QA1_AllDomain_1_ie_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_7'>pass</button>
+    <div id='div_pt2_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_7'>pass</button>
+    <div id='div_pt2_7' class="collapse in">
+    <pre>
+    
+pt2_7: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domainfees/4/
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_8' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_02_getFee_QA1_AllDomain_2_uk_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_8'>pass</button>
+    <div id='div_pt2_8' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_8'>pass</button>
+    <div id='div_pt2_8' class="collapse in">
+    <pre>
+    
+pt2_8: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domainfees/5/
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_9' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_02_getFee_QA1_AllDomain_3_au_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_9'>pass</button>
+    <div id='div_pt2_9' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_9' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_9'>pass</button>
+    <div id='div_pt2_9' class="collapse in">
+    <pre>
+    
+pt2_9: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domainfees/6/
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_10' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_02_getFee_QA1_AllDomain_4_nz_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_10'>pass</button>
+    <div id='div_pt2_10' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_10' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_10'>pass</button>
+    <div id='div_pt2_10' class="collapse in">
+    <pre>
+    
+pt2_10: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domainfees/7/
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_11' class='none'>
+    <td class='failCase'><div class='testcase'>test_03_getFee_Stg1_0_Url_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_11' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_11'>fail</button>
+    <div id='div_ft2_11' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_11' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_11'>fail</button>
+    <div id='div_ft2_11' class="collapse in">
+    <pre>
+    
+ft2_11: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domainfees/1/
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 98, in test_03_getFee_Stg1
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_12' class='none'>
+    <td class='failCase'><div class='testcase'>test_03_getFee_Stg1_1_Url_org</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_12' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_12'>fail</button>
+    <div id='div_ft2_12' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_12' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_12'>fail</button>
+    <div id='div_ft2_12' class="collapse in">
+    <pre>
+    
+ft2_12: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgfees/238663/
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 98, in test_03_getFee_Stg1
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_13' class='none'>
+    <td class='failCase'><div class='testcase'>test_03_getFee_Stg1_2_Url_event</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_13' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_13'>fail</button>
+    <div id='div_ft2_13' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_13' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_13'>fail</button>
+    <div id='div_ft2_13' class="collapse in">
+    <pre>
+    
+ft2_13: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/238663/eventfees/7747685
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 98, in test_03_getFee_Stg1
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_14' class='none'>
+    <td class='failCase'><div class='testcase'>test_03_getFee_Stg1_3_Url_eventFeeType</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_14' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_14'>fail</button>
+    <div id='div_ft2_14' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_14' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_14'>fail</button>
+    <div id='div_ft2_14' class="collapse in">
+    <pre>
+    
+ft2_14: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/238663/eventfees/7747685?feeType=8
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 98, in test_03_getFee_Stg1
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_15' class='none'>
+    <td class='failCase'><div class='testcase'>test_03_getFee_Stg1_4_Url_groupEventFeeType</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_15' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_15'>fail</button>
+    <div id='div_ft2_15' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_15' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_15'>fail</button>
+    <div id='div_ft2_15' class="collapse in">
+    <pre>
+    
+ft2_15: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/238663/eventgroupfees/29709
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 98, in test_03_getFee_Stg1
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_16' class='none'>
+    <td class='failCase'><div class='testcase'>test_04_getFee_STG1_AllDomain_0_ca_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_16' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_16'>fail</button>
+    <div id='div_ft2_16' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_16' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_16'>fail</button>
+    <div id='div_ft2_16' class="collapse in">
+    <pre>
+    
+ft2_16: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domainfees/2/
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 109, in test_04_getFee_STG1_AllDomain
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_17' class='none'>
+    <td class='failCase'><div class='testcase'>test_04_getFee_STG1_AllDomain_1_ie_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_17' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_17'>fail</button>
+    <div id='div_ft2_17' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_17' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_17'>fail</button>
+    <div id='div_ft2_17' class="collapse in">
+    <pre>
+    
+ft2_17: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domainfees/4/
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 109, in test_04_getFee_STG1_AllDomain
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_18' class='none'>
+    <td class='failCase'><div class='testcase'>test_04_getFee_STG1_AllDomain_2_uk_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_18' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_18'>fail</button>
+    <div id='div_ft2_18' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_18' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_18'>fail</button>
+    <div id='div_ft2_18' class="collapse in">
+    <pre>
+    
+ft2_18: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domainfees/5/
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 109, in test_04_getFee_STG1_AllDomain
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_19' class='none'>
+    <td class='failCase'><div class='testcase'>test_04_getFee_STG1_AllDomain_3_au_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_19' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_19'>fail</button>
+    <div id='div_ft2_19' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_19' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_19'>fail</button>
+    <div id='div_ft2_19' class="collapse in">
+    <pre>
+    
+ft2_19: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domainfees/6/
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 109, in test_04_getFee_STG1_AllDomain
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_20' class='none'>
+    <td class='failCase'><div class='testcase'>test_04_getFee_STG1_AllDomain_4_nz_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_20' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_20'>fail</button>
+    <div id='div_ft2_20' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_20' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_20'>fail</button>
+    <div id='div_ft2_20' class="collapse in">
+    <pre>
+    
+ft2_20: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domainfees/7/
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 109, in test_04_getFee_STG1_AllDomain
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_21' class='none'>
+    <td class='failCase'><div class='testcase'>test_05_getFee_STG1_AllDomainOrgs_0_us_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_21' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_21'>fail</button>
+    <div id='div_ft2_21' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_21' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_21'>fail</button>
+    <div id='div_ft2_21' class="collapse in">
+    <pre>
+    
+ft2_21: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgfees/238663/
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 121, in test_05_getFee_STG1_AllDomainOrgs
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_22' class='none'>
+    <td class='failCase'><div class='testcase'>test_05_getFee_STG1_AllDomainOrgs_1_ca_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_22' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_22'>fail</button>
+    <div id='div_ft2_22' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_22' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_22'>fail</button>
+    <div id='div_ft2_22' class="collapse in">
+    <pre>
+    
+ft2_22: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgfees/231863/
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 121, in test_05_getFee_STG1_AllDomainOrgs
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_23' class='none'>
+    <td class='failCase'><div class='testcase'>test_05_getFee_STG1_AllDomainOrgs_2_ie_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_23' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_23'>fail</button>
+    <div id='div_ft2_23' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_23' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_23'>fail</button>
+    <div id='div_ft2_23' class="collapse in">
+    <pre>
+    
+ft2_23: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgfees/231873/
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 121, in test_05_getFee_STG1_AllDomainOrgs
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_24' class='none'>
+    <td class='failCase'><div class='testcase'>test_05_getFee_STG1_AllDomainOrgs_3_uk_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_24' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_24'>fail</button>
+    <div id='div_ft2_24' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_24' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_24'>fail</button>
+    <div id='div_ft2_24' class="collapse in">
+    <pre>
+    
+ft2_24: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgfees/231883/
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 121, in test_05_getFee_STG1_AllDomainOrgs
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_25' class='none'>
+    <td class='failCase'><div class='testcase'>test_05_getFee_STG1_AllDomainOrgs_4_au_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_25' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_25'>fail</button>
+    <div id='div_ft2_25' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_25' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_25'>fail</button>
+    <div id='div_ft2_25' class="collapse in">
+    <pre>
+    
+ft2_25: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgfees/231893/
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 121, in test_05_getFee_STG1_AllDomainOrgs
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_26' class='none'>
+    <td class='failCase'><div class='testcase'>test_05_getFee_STG1_AllDomainOrgs_5_nz_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_26' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_26'>fail</button>
+    <div id='div_ft2_26' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_26' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_26'>fail</button>
+    <div id='div_ft2_26' class="collapse in">
+    <pre>
+    
+ft2_26: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgfees/231903/
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 121, in test_05_getFee_STG1_AllDomainOrgs
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_27' class='none'>
+    <td class='failCase'><div class='testcase'>test_06_getFee_STG1_AllDomainEvents_0_us_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_27' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_27'>fail</button>
+    <div id='div_ft2_27' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_27' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_27'>fail</button>
+    <div id='div_ft2_27' class="collapse in">
+    <pre>
+    
+ft2_27: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/238663/eventfees/7742085
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 133, in test_06_getFee_STG1_AllDomainEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_28' class='none'>
+    <td class='failCase'><div class='testcase'>test_06_getFee_STG1_AllDomainEvents_1_ca_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_28' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_28'>fail</button>
+    <div id='div_ft2_28' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_28' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_28'>fail</button>
+    <div id='div_ft2_28' class="collapse in">
+    <pre>
+    
+ft2_28: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/231863/eventfees/7745735
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 133, in test_06_getFee_STG1_AllDomainEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_29' class='none'>
+    <td class='failCase'><div class='testcase'>test_06_getFee_STG1_AllDomainEvents_2_ie_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_29' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_29'>fail</button>
+    <div id='div_ft2_29' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_29' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_29'>fail</button>
+    <div id='div_ft2_29' class="collapse in">
+    <pre>
+    
+ft2_29: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/231873/eventfees/7649315
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 133, in test_06_getFee_STG1_AllDomainEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_30' class='none'>
+    <td class='failCase'><div class='testcase'>test_06_getFee_STG1_AllDomainEvents_3_uk_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_30' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_30'>fail</button>
+    <div id='div_ft2_30' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_30' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_30'>fail</button>
+    <div id='div_ft2_30' class="collapse in">
+    <pre>
+    
+ft2_30: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/231883/eventfees/7649325
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 133, in test_06_getFee_STG1_AllDomainEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_31' class='none'>
+    <td class='failCase'><div class='testcase'>test_06_getFee_STG1_AllDomainEvents_4_au_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_31' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_31'>fail</button>
+    <div id='div_ft2_31' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_31' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_31'>fail</button>
+    <div id='div_ft2_31' class="collapse in">
+    <pre>
+    
+ft2_31: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/231893/eventfees/7649285
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 133, in test_06_getFee_STG1_AllDomainEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_32' class='none'>
+    <td class='failCase'><div class='testcase'>test_06_getFee_STG1_AllDomainEvents_5_nz_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_32' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_32'>fail</button>
+    <div id='div_ft2_32' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_32' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_32'>fail</button>
+    <div id='div_ft2_32' class="collapse in">
+    <pre>
+    
+ft2_32: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/231903/eventfees/7545665
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 133, in test_06_getFee_STG1_AllDomainEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_33' class='none'>
+    <td class='failCase'><div class='testcase'>test_06_getFee_STG1_AllDomainGroupEvents_0_us_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_33' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_33'>fail</button>
+    <div id='div_ft2_33' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_33' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_33'>fail</button>
+    <div id='div_ft2_33' class="collapse in">
+    <pre>
+    
+ft2_33: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/238663/eventgroupfees/29709
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 145, in test_06_getFee_STG1_AllDomainGroupEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_34' class='none'>
+    <td class='failCase'><div class='testcase'>test_06_getFee_STG1_AllDomainGroupEvents_1_ca_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_34' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_34'>fail</button>
+    <div id='div_ft2_34' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_34' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_34'>fail</button>
+    <div id='div_ft2_34' class="collapse in">
+    <pre>
+    
+ft2_34: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/231863/eventgroupfees/29712
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 145, in test_06_getFee_STG1_AllDomainGroupEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_35' class='none'>
+    <td class='failCase'><div class='testcase'>test_06_getFee_STG1_AllDomainGroupEvents_2_ie_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_35' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_35'>fail</button>
+    <div id='div_ft2_35' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_35' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_35'>fail</button>
+    <div id='div_ft2_35' class="collapse in">
+    <pre>
+    
+ft2_35: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/231873/eventgroupfees/29710
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 145, in test_06_getFee_STG1_AllDomainGroupEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_36' class='none'>
+    <td class='failCase'><div class='testcase'>test_06_getFee_STG1_AllDomainGroupEvents_3_uk_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_36' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_36'>fail</button>
+    <div id='div_ft2_36' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_36' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_36'>fail</button>
+    <div id='div_ft2_36' class="collapse in">
+    <pre>
+    
+ft2_36: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/231883/eventgroupfees/29711
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 145, in test_06_getFee_STG1_AllDomainGroupEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_37' class='none'>
+    <td class='failCase'><div class='testcase'>test_06_getFee_STG1_AllDomainGroupEvents_4_au_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_37' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_37'>fail</button>
+    <div id='div_ft2_37' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_37' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_37'>fail</button>
+    <div id='div_ft2_37' class="collapse in">
+    <pre>
+    
+ft2_37: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/231893/eventgroupfees/29714
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 145, in test_06_getFee_STG1_AllDomainGroupEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft2_38' class='none'>
+    <td class='failCase'><div class='testcase'>test_06_getFee_STG1_AllDomainGroupEvents_5_nz_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft2_38' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_38'>fail</button>
+    <div id='div_ft2_38' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft2_38' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_38'>fail</button>
+    <div id='div_ft2_38' class="collapse in">
+    <pre>
+    
+ft2_38: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/231903/eventgroupfees/29713
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFee.py", line 145, in test_06_getFee_STG1_AllDomainGroupEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='failClass warning'>
+    <td>test_getFeeReport.TestGetFeeReport</td>
+    <td class="text-center">19</td>
+    <td class="text-center">6</td>
+    <td class="text-center">13</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c3',19)" class="detail" id='c3'>Detail</a></td>
+</tr>
+
+<tr id='pt3_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_01_getFeeReport_QA1</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt3_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_1'>pass</button>
+    <div id='div_pt3_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt3_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_1'>pass</button>
+    <div id='div_pt3_1' class="collapse in">
+    <pre>
+    
+pt3_1: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domains/1/orgs/145162/eventfees/3705284/reports
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_02_getFeeReport_QA1_AllDomain_0_ca_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt3_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_2'>pass</button>
+    <div id='div_pt3_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt3_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_2'>pass</button>
+    <div id='div_pt3_2' class="collapse in">
+    <pre>
+    
+pt3_2: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domains/2/orgs/145162/eventfees/3705284/reports
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_02_getFeeReport_QA1_AllDomain_1_ie_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt3_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_3'>pass</button>
+    <div id='div_pt3_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt3_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_3'>pass</button>
+    <div id='div_pt3_3' class="collapse in">
+    <pre>
+    
+pt3_3: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domains/4/orgs/145162/eventfees/3705284/reports
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_02_getFeeReport_QA1_AllDomain_2_uk_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt3_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_4'>pass</button>
+    <div id='div_pt3_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt3_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_4'>pass</button>
+    <div id='div_pt3_4' class="collapse in">
+    <pre>
+    
+pt3_4: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domains/5/orgs/145162/eventfees/3705284/reports
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_02_getFeeReport_QA1_AllDomain_3_au_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt3_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_5'>pass</button>
+    <div id='div_pt3_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt3_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_5'>pass</button>
+    <div id='div_pt3_5' class="collapse in">
+    <pre>
+    
+pt3_5: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domains/6/orgs/145162/eventfees/3705284/reports
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_02_getFeeReport_QA1_AllDomain_4_nz_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt3_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_6'>pass</button>
+    <div id='div_pt3_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt3_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_6'>pass</button>
+    <div id='div_pt3_6' class="collapse in">
+    <pre>
+    
+pt3_6: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domains/7/orgs/145162/eventfees/3705284/reports
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_7' class='none'>
+    <td class='failCase'><div class='testcase'>test_03_getFeeReport_Stg1</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_7'>fail</button>
+    <div id='div_ft3_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_7'>fail</button>
+    <div id='div_ft3_7' class="collapse in">
+    <pre>
+    
+ft3_7: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/238663/eventfees/7747685/reports
+Traceback (most recent call last):
+  File "D:\python\ticketweb\fee\API\test_getFeeReport.py", line 70, in test_03_getFeeReport_Stg1
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_8' class='none'>
+    <td class='failCase'><div class='testcase'>test_04_getFeeReport_STG1_AllDomainEvents_0_us_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_8'>fail</button>
+    <div id='div_ft3_8' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_8'>fail</button>
+    <div id='div_ft3_8' class="collapse in">
+    <pre>
+    
+ft3_8: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/238663/eventfees/7742085/reports
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFeeReport.py", line 82, in test_04_getFeeReport_STG1_AllDomainEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_9' class='none'>
+    <td class='failCase'><div class='testcase'>test_04_getFeeReport_STG1_AllDomainEvents_1_ca_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_9'>fail</button>
+    <div id='div_ft3_9' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_9' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_9'>fail</button>
+    <div id='div_ft3_9' class="collapse in">
+    <pre>
+    
+ft3_9: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/2/orgs/231863/eventfees/7745735/reports
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFeeReport.py", line 82, in test_04_getFeeReport_STG1_AllDomainEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_10' class='none'>
+    <td class='failCase'><div class='testcase'>test_04_getFeeReport_STG1_AllDomainEvents_2_ie_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_10'>fail</button>
+    <div id='div_ft3_10' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_10' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_10'>fail</button>
+    <div id='div_ft3_10' class="collapse in">
+    <pre>
+    
+ft3_10: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/4/orgs/231873/eventfees/7649315/reports
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFeeReport.py", line 82, in test_04_getFeeReport_STG1_AllDomainEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_11' class='none'>
+    <td class='failCase'><div class='testcase'>test_04_getFeeReport_STG1_AllDomainEvents_3_uk_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_11' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_11'>fail</button>
+    <div id='div_ft3_11' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_11' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_11'>fail</button>
+    <div id='div_ft3_11' class="collapse in">
+    <pre>
+    
+ft3_11: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/5/orgs/231883/eventfees/7649325/reports
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFeeReport.py", line 82, in test_04_getFeeReport_STG1_AllDomainEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_12' class='none'>
+    <td class='failCase'><div class='testcase'>test_04_getFeeReport_STG1_AllDomainEvents_4_au_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_12' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_12'>fail</button>
+    <div id='div_ft3_12' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_12' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_12'>fail</button>
+    <div id='div_ft3_12' class="collapse in">
+    <pre>
+    
+ft3_12: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/6/orgs/231893/eventfees/7649285/reports
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFeeReport.py", line 82, in test_04_getFeeReport_STG1_AllDomainEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_13' class='none'>
+    <td class='failCase'><div class='testcase'>test_04_getFeeReport_STG1_AllDomainEvents_5_nz_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_13' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_13'>fail</button>
+    <div id='div_ft3_13' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_13' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_13'>fail</button>
+    <div id='div_ft3_13' class="collapse in">
+    <pre>
+    
+ft3_13: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/7/orgs/231903/eventfees/7545665/reports
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFeeReport.py", line 82, in test_04_getFeeReport_STG1_AllDomainEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_14' class='none'>
+    <td class='failCase'><div class='testcase'>test_05_getFeeReport_STG1_AllDomainGroupEvents_0_us_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_14' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_14'>fail</button>
+    <div id='div_ft3_14' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_14' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_14'>fail</button>
+    <div id='div_ft3_14' class="collapse in">
+    <pre>
+    
+ft3_14: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/238663/eventgroupfees/29709/reports
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFeeReport.py", line 94, in test_05_getFeeReport_STG1_AllDomainGroupEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_15' class='none'>
+    <td class='failCase'><div class='testcase'>test_05_getFeeReport_STG1_AllDomainGroupEvents_1_ca_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_15' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_15'>fail</button>
+    <div id='div_ft3_15' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_15' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_15'>fail</button>
+    <div id='div_ft3_15' class="collapse in">
+    <pre>
+    
+ft3_15: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/2/orgs/231863/eventgroupfees/29712/reports
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFeeReport.py", line 94, in test_05_getFeeReport_STG1_AllDomainGroupEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_16' class='none'>
+    <td class='failCase'><div class='testcase'>test_05_getFeeReport_STG1_AllDomainGroupEvents_2_ie_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_16' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_16'>fail</button>
+    <div id='div_ft3_16' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_16' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_16'>fail</button>
+    <div id='div_ft3_16' class="collapse in">
+    <pre>
+    
+ft3_16: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/4/orgs/231873/eventgroupfees/29710/reports
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFeeReport.py", line 94, in test_05_getFeeReport_STG1_AllDomainGroupEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_17' class='none'>
+    <td class='failCase'><div class='testcase'>test_05_getFeeReport_STG1_AllDomainGroupEvents_3_uk_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_17' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_17'>fail</button>
+    <div id='div_ft3_17' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_17' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_17'>fail</button>
+    <div id='div_ft3_17' class="collapse in">
+    <pre>
+    
+ft3_17: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/5/orgs/231883/eventgroupfees/29711/reports
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFeeReport.py", line 94, in test_05_getFeeReport_STG1_AllDomainGroupEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_18' class='none'>
+    <td class='failCase'><div class='testcase'>test_05_getFeeReport_STG1_AllDomainGroupEvents_4_au_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_18' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_18'>fail</button>
+    <div id='div_ft3_18' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_18' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_18'>fail</button>
+    <div id='div_ft3_18' class="collapse in">
+    <pre>
+    
+ft3_18: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/6/orgs/231893/eventgroupfees/29714/reports
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFeeReport.py", line 94, in test_05_getFeeReport_STG1_AllDomainGroupEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_19' class='none'>
+    <td class='failCase'><div class='testcase'>test_05_getFeeReport_STG1_AllDomainGroupEvents_5_nz_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_19' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_19'>fail</button>
+    <div id='div_ft3_19' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_19' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_19'>fail</button>
+    <div id='div_ft3_19' class="collapse in">
+    <pre>
+    
+ft3_19: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/7/orgs/231903/eventgroupfees/29713/reports
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFeeReport.py", line 94, in test_05_getFeeReport_STG1_AllDomainGroupEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='failClass warning'>
+    <td>test_saveFeeAPI.TestSaveFee</td>
+    <td class="text-center">8</td>
+    <td class="text-center">1</td>
+    <td class="text-center">7</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c4',8)" class="detail" id='c4'>Detail</a></td>
+</tr>
+
+<tr id='pt4_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_01_Save_API_QA1</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt4_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_1'>pass</button>
+    <div id='div_pt4_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt4_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt4_1'>pass</button>
+    <div id='div_pt4_1' class="collapse in">
+    <pre>
+    
+pt4_1: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domains/1/orgs/145162/eventfees/3705284?userId=alam468@ticketweb.com
+[{            "feeTypeId": 2,            "tiers": [                {                    "lowertier": null,                    "uppertier": null,                    "selleramount": 37.36,                    "sellerlowerbound": null,                    "sellerupperbound": null,                    "buyeramount": 41.47,                    "buyerlowerbound": null,                    "buyerupperbound": null,                    "units": 101                }]}]
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_2' class='none'>
+    <td class='failCase'><div class='testcase'>test_02_Save_API_STG1</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_2'>fail</button>
+    <div id='div_ft4_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_2'>fail</button>
+    <div id='div_ft4_2' class="collapse in">
+    <pre>
+    
+ft4_2: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/238663/eventfees/7747685?userId=alam312@ticketweb.com
+[{            "feeTypeId": 4,            "tiers": [                {                    "lowertier": null,                    "uppertier": null,                    "selleramount": 73.11,                    "sellerlowerbound": null,                    "sellerupperbound": null,                    "buyeramount": 33.99,                    "buyerlowerbound": null,                    "buyerupperbound": null,                    "units": 101                }]}]
+Traceback (most recent call last):
+  File "D:\python\ticketweb\fee\API\test_saveFeeAPI.py", line 102, in test_02_Save_API_STG1
+    self.assertEqual("Success", result)
+AssertionError: 'Success' != 'cannot get any response'
+- Success
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_3' class='none'>
+    <td class='failCase'><div class='testcase'>test_03_Save_API_STG1_AllDomainOrgs_0_us_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_3'>fail</button>
+    <div id='div_ft4_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_3'>fail</button>
+    <div id='div_ft4_3' class="collapse in">
+    <pre>
+    
+ft4_3: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgfees/238663?userId=alam216@ticketweb.com
+[{            "feeTypeId": 17,            "tiers": [                {                    "lowertier": null,                    "uppertier": null,                    "selleramount": 19.33,                    "sellerlowerbound": null,                    "sellerupperbound": null,                    "buyeramount": 78.89,                    "buyerlowerbound": null,                    "buyerupperbound": null,                    "units": "100"                }]}]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_saveFeeAPI.py", line 129, in test_03_Save_API_STG1_AllDomainOrgs
+    self.assertEqual("Success", result)
+AssertionError: 'Success' != 'cannot get any response'
+- Success
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_4' class='none'>
+    <td class='failCase'><div class='testcase'>test_03_Save_API_STG1_AllDomainOrgs_1_ca_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_4'>fail</button>
+    <div id='div_ft4_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_4'>fail</button>
+    <div id='div_ft4_4' class="collapse in">
+    <pre>
+    
+ft4_4: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/2/orgfees/231863?userId=alam557@ticketweb.com
+[{            "feeTypeId": 17,            "tiers": [                {                    "lowertier": null,                    "uppertier": null,                    "selleramount": 62.58,                    "sellerlowerbound": null,                    "sellerupperbound": null,                    "buyeramount": 9.03,                    "buyerlowerbound": null,                    "buyerupperbound": null,                    "units": "100"                }]}]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_saveFeeAPI.py", line 129, in test_03_Save_API_STG1_AllDomainOrgs
+    self.assertEqual("Success", result)
+AssertionError: 'Success' != 'cannot get any response'
+- Success
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_5' class='none'>
+    <td class='failCase'><div class='testcase'>test_03_Save_API_STG1_AllDomainOrgs_2_ie_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_5'>fail</button>
+    <div id='div_ft4_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_5'>fail</button>
+    <div id='div_ft4_5' class="collapse in">
+    <pre>
+    
+ft4_5: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/4/orgfees/231873?userId=alam561@ticketweb.com
+[{            "feeTypeId": 17,            "tiers": [                {                    "lowertier": null,                    "uppertier": null,                    "selleramount": 13.81,                    "sellerlowerbound": null,                    "sellerupperbound": null,                    "buyeramount": 78.87,                    "buyerlowerbound": null,                    "buyerupperbound": null,                    "units": "100"                }]}]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_saveFeeAPI.py", line 129, in test_03_Save_API_STG1_AllDomainOrgs
+    self.assertEqual("Success", result)
+AssertionError: 'Success' != 'cannot get any response'
+- Success
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_6' class='none'>
+    <td class='failCase'><div class='testcase'>test_04_Save_API_STG1_AllDomainGroupEvent_0_us_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_6'>fail</button>
+    <div id='div_ft4_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_6'>fail</button>
+    <div id='div_ft4_6' class="collapse in">
+    <pre>
+    
+ft4_6: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/238663/eventgroupfees/29709?userId=alam26@ticketweb.com
+[{            "feeTypeId": 5,            "tiers": [                {                    "lowertier": null,                    "uppertier": null,                    "selleramount": 38.14,                    "sellerlowerbound": null,                    "sellerupperbound": null,                    "buyeramount": 42.7,                    "buyerlowerbound": null,                    "buyerupperbound": null,                    "units": "100"                }]}]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_saveFeeAPI.py", line 157, in test_04_Save_API_STG1_AllDomainGroupEvent
+    self.assertEqual("Success", result)
+AssertionError: 'Success' != 'cannot get any response'
+- Success
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_7' class='none'>
+    <td class='failCase'><div class='testcase'>test_04_Save_API_STG1_AllDomainGroupEvent_1_ca_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_7'>fail</button>
+    <div id='div_ft4_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_7'>fail</button>
+    <div id='div_ft4_7' class="collapse in">
+    <pre>
+    
+ft4_7: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/2/orgs/231863/eventgroupfees/29712?userId=alam524@ticketweb.com
+[{            "feeTypeId": 5,            "tiers": [                {                    "lowertier": null,                    "uppertier": null,                    "selleramount": 95.62,                    "sellerlowerbound": null,                    "sellerupperbound": null,                    "buyeramount": 1.13,                    "buyerlowerbound": null,                    "buyerupperbound": null,                    "units": "100"                }]}]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_saveFeeAPI.py", line 157, in test_04_Save_API_STG1_AllDomainGroupEvent
+    self.assertEqual("Success", result)
+AssertionError: 'Success' != 'cannot get any response'
+- Success
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft4_8' class='none'>
+    <td class='failCase'><div class='testcase'>test_04_Save_API_STG1_AllDomainGroupEvent_2_ie_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft4_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft4_8'>fail</button>
+    <div id='div_ft4_8' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft4_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft4_8'>fail</button>
+    <div id='div_ft4_8' class="collapse in">
+    <pre>
+    
+ft4_8: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/4/orgs/231873/eventgroupfees/29710?userId=alam96@ticketweb.com
+[{            "feeTypeId": 5,            "tiers": [                {                    "lowertier": null,                    "uppertier": null,                    "selleramount": 78.56,                    "sellerlowerbound": null,                    "sellerupperbound": null,                    "buyeramount": 56.62,                    "buyerlowerbound": null,                    "buyerupperbound": null,                    "units": "100"                }]}]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_saveFeeAPI.py", line 157, in test_04_Save_API_STG1_AllDomainGroupEvent
+    self.assertEqual("Success", result)
+AssertionError: 'Success' != 'cannot get any response'
+- Success
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='failClass warning'>
+    <td>test_getFeeAuditing.TestGetFeeAuditing</td>
+    <td class="text-center">13</td>
+    <td class="text-center">6</td>
+    <td class="text-center">7</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c5',13)" class="detail" id='c5'>Detail</a></td>
+</tr>
+
+<tr id='pt5_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_01_getFeeAuditing_QA1</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt5_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_1'>pass</button>
+    <div id='div_pt5_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt5_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_1'>pass</button>
+    <div id='div_pt5_1' class="collapse in">
+    <pre>
+    
+pt5_1: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domains/1/orgs/145162/auditreports
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt5_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_02_getFeeAuditing_QA1_AllDomain_0_ca_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt5_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_2'>pass</button>
+    <div id='div_pt5_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt5_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_2'>pass</button>
+    <div id='div_pt5_2' class="collapse in">
+    <pre>
+    
+pt5_2: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domains/2/orgs/145162/auditreports
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt5_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_02_getFeeAuditing_QA1_AllDomain_1_ie_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt5_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_3'>pass</button>
+    <div id='div_pt5_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt5_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_3'>pass</button>
+    <div id='div_pt5_3' class="collapse in">
+    <pre>
+    
+pt5_3: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domains/4/orgs/145162/auditreports
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt5_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_02_getFeeAuditing_QA1_AllDomain_2_uk_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt5_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_4'>pass</button>
+    <div id='div_pt5_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt5_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_4'>pass</button>
+    <div id='div_pt5_4' class="collapse in">
+    <pre>
+    
+pt5_4: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domains/5/orgs/145162/auditreports
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt5_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_02_getFeeAuditing_QA1_AllDomain_3_au_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt5_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_5'>pass</button>
+    <div id='div_pt5_5' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt5_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_5'>pass</button>
+    <div id='div_pt5_5' class="collapse in">
+    <pre>
+    
+pt5_5: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domains/6/orgs/145162/auditreports
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt5_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_02_getFeeAuditing_QA1_AllDomain_4_nz_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt5_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_6'>pass</button>
+    <div id='div_pt5_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt5_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_6'>pass</button>
+    <div id='div_pt5_6' class="collapse in">
+    <pre>
+    
+pt5_6: 
+http://app3.tktwb.twqa1.websys.tmcs:8080/fees/domains/7/orgs/145162/auditreports
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_7' class='none'>
+    <td class='failCase'><div class='testcase'>test_03_getFeeAuditing_Stg1</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_7'>fail</button>
+    <div id='div_ft5_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_7'>fail</button>
+    <div id='div_ft5_7' class="collapse in">
+    <pre>
+    
+ft5_7: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/238663/auditreports
+Traceback (most recent call last):
+  File "D:\python\ticketweb\fee\API\test_getFeeAuditing.py", line 65, in test_03_getFeeAuditing_Stg1
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_8' class='none'>
+    <td class='failCase'><div class='testcase'>test_04_getFeeReport_STG1_AllDomainEvents_0_us_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_8'>fail</button>
+    <div id='div_ft5_8' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_8'>fail</button>
+    <div id='div_ft5_8' class="collapse in">
+    <pre>
+    
+ft5_8: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/1/orgs/238663/auditreports
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFeeAuditing.py", line 77, in test_04_getFeeReport_STG1_AllDomainEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_9' class='none'>
+    <td class='failCase'><div class='testcase'>test_04_getFeeReport_STG1_AllDomainEvents_1_ca_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_9'>fail</button>
+    <div id='div_ft5_9' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_9' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_9'>fail</button>
+    <div id='div_ft5_9' class="collapse in">
+    <pre>
+    
+ft5_9: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/2/orgs/231863/auditreports
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFeeAuditing.py", line 77, in test_04_getFeeReport_STG1_AllDomainEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_10' class='none'>
+    <td class='failCase'><div class='testcase'>test_04_getFeeReport_STG1_AllDomainEvents_2_ie_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_10'>fail</button>
+    <div id='div_ft5_10' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_10' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_10'>fail</button>
+    <div id='div_ft5_10' class="collapse in">
+    <pre>
+    
+ft5_10: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/4/orgs/231873/auditreports
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFeeAuditing.py", line 77, in test_04_getFeeReport_STG1_AllDomainEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_11' class='none'>
+    <td class='failCase'><div class='testcase'>test_04_getFeeReport_STG1_AllDomainEvents_3_uk_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_11' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_11'>fail</button>
+    <div id='div_ft5_11' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_11' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_11'>fail</button>
+    <div id='div_ft5_11' class="collapse in">
+    <pre>
+    
+ft5_11: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/5/orgs/231883/auditreports
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFeeAuditing.py", line 77, in test_04_getFeeReport_STG1_AllDomainEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_12' class='none'>
+    <td class='failCase'><div class='testcase'>test_04_getFeeReport_STG1_AllDomainEvents_4_au_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_12' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_12'>fail</button>
+    <div id='div_ft5_12' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_12' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_12'>fail</button>
+    <div id='div_ft5_12' class="collapse in">
+    <pre>
+    
+ft5_12: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/6/orgs/231893/auditreports
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFeeAuditing.py", line 77, in test_04_getFeeReport_STG1_AllDomainEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft5_13' class='none'>
+    <td class='failCase'><div class='testcase'>test_04_getFeeReport_STG1_AllDomainEvents_5_nz_domain</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft5_13' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft5_13'>fail</button>
+    <div id='div_ft5_13' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft5_13' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft5_13'>fail</button>
+    <div id='div_ft5_13' class="collapse in">
+    <pre>
+    
+ft5_13: 
+http://clientapi.tktwb.twstg1.websys.tmcs:8080/fees/domains/7/orgs/231903/auditreports
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\parameterized\parameterized.py", line 392, in standalone_func
+    return func(*(a + p.args), **p.kwargs)
+  File "D:\python\ticketweb\fee\API\test_getFeeAuditing.py", line 77, in test_04_getFeeReport_STG1_AllDomainEvents
+    self.assertEqual("passed", result)
+AssertionError: 'passed' != 'cannot get any response'
+- passed
++ cannot get any response
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='total_row' class="text-center active">
+    <td>Total</td>
+    <td>80</td>
+    <td>24</td>
+    <td>56</td>
+    <td>0</td>
+    <td>Passing rate: 30.00%</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+    <div style=" position:fixed;right:50px; bottom:30px; width:20px; height:20px;cursor:pointer">
+    <a href="#"><span class="glyphicon glyphicon-eject" style = "font-size:30px;" aria-hidden="true">
+    </span></a></div>
+    
+</body>
+</html>

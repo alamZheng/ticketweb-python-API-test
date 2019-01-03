@@ -1,0 +1,9 @@
+2018-05-09 16:17:40,958 - BasePage - INFO - Had find the element '  ' successful by xpath via value: //*[@id="lst-ib"] 
+2018-05-09 16:17:41,045 - BasePage - INFO - Had type ' text ' in inputBox
+2018-05-09 16:17:41,386 - BasePage - INFO - Had take screenshot and save to folder : /screenshots
+2018-05-09 16:17:41,402 - BasePage - INFO - Had find the element '  ' successful by xpath via value: //*[@id="lst-ib"] 
+2018-05-09 16:17:41,411 - BasePage - INFO - Clear text in input box before typing.
+2018-05-09 16:17:41,692 - BasePage - INFO - Had take screenshot and save to folder : /screenshots
+2018-05-09 16:17:41,728 - BasePage - INFO - Had find the element ' About ' successful by xpath via value: //*[@id="hptl"]/a[1] 
+2018-05-09 16:17:41,736 - BasePage - INFO - The element ' About ' was clicked.
+2018-05-09 16:17:44,087 - BasePage - INFO - Current page title is Our latest | Google

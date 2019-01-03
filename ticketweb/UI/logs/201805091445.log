@@ -1,0 +1,2 @@
+2018-05-09 14:45:36,666 - BasePage - INFO - Had find the element '  ' successful by xpath via value: //*[@id="lst-ib"] 
+2018-05-09 14:45:36,747 - BasePage - INFO - Had type ' text ' in inputBox

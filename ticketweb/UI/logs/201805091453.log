@@ -1,0 +1,11 @@
+2018-05-09 14:53:56,682 - BasePage - INFO - Had find the element '  ' successful by xpath via value: //*[@id="lst-ib"] 
+2018-05-09 14:53:56,766 - BasePage - INFO - Had type ' text ' in inputBox
+2018-05-09 14:53:57,104 - BasePage - INFO - Had take screenshot and save to folder : /screenshots
+2018-05-09 14:53:57,119 - BasePage - INFO - Had find the element '  ' successful by xpath via value: //*[@id="lst-ib"] 
+2018-05-09 14:53:57,128 - BasePage - INFO - Clear text in input box before typing.
+2018-05-09 14:53:57,422 - BasePage - INFO - Had take screenshot and save to folder : /screenshots
+2018-05-09 14:53:57,438 - BasePage - ERROR - NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="gbw"]/div/div/div[2]/div[4]/div[1]/a/span"}
+  (Session info: chrome=65.0.3325.181)
+  (Driver info: chromedriver=2.35.528161 (5b82f2d2aae0ca24b877009200ced9065a772e73),platform=Windows NT 6.1.7601 SP1 x86_64)
+
+2018-05-09 14:53:57,721 - BasePage - INFO - Had take screenshot and save to folder : /screenshots
